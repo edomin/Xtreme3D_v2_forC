@@ -1,0 +1,5 @@
+lib/
+obj/
+samples/
+Xtreme3DCpp/
+*.dll
