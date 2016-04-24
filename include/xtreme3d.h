@@ -1,13 +1,5 @@
-/*
- * xtreme3d.h - main header file for the Xtreme3D engine
- * Version 1.0
- * 
- * Written by Timur Gafarov <clocktower89@mail.ru>
- * 
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is a part of the Xtreme3D C++ distribution.
- * 
- */
+#ifndef X3D_XTREME3D_H
+#define X3D_XTREME3D_H
 
 #include "actor.h"
 #include "b3d.h"
@@ -248,3 +240,5 @@ void X3D_Init(void);
 void X3D_Quit(void);
 /*
 static float X3D_GetFPS(void);*/
+
+#endif
