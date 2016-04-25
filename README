@@ -1,2 +1,29 @@
-Xtreme3D v2 for C. Fork of Xtreme3D v2 for C++ http://xtreme3d.narod.ru/x3d_cpp.htm by Timur Gafarov.
-Work in progress. Usage instructions, samples etc will be soon... May be.
+Xtreme3D v2 for C. Fork of Xtreme3D v2 for C++ by Timur Gafarov.
+About Xtreme3D library/engine you can read here: http://xtreme3d.narod.ru
+
+How to build it:
+1. Download it and extract somewhere to.
+2. Download and install MinGW32 (if you have not it) and add path to its "bin/" folder in PATH variable of OS.
+3. Open MSYS and jump to directory where you extract Xtreme3D v2 for C.
+4. Commands:
+	For delete object files and config.h:
+		make clean
+	For build C-language binding of Xtreme3D.dll only:
+		make
+	For build C-language binding of Xtreme3D.dll and some addidional functions
+		make INC_WINDOW=yes
+	Or
+		make INC_TIMER=yes
+	Or
+		make INC_WINDOW=yes INC_TIMER=yes
+	For rebuild enter "make clean" and then one of build commands above
+There is 2 build options: INC_WINDOW=yes and INC_TIMER=yes. First adds window creation functions to C-language binding library. Second adds timer functions. Originally Xtreme3D.dll does not contain this functions and if you wish, you can use external libraries of window creation and timer functions. 
+
+How to use it:
+1. Build it.
+2. Copy folders "include" and "lib" to your project.
+3. Use "xtreme3d.h" only for including all library functions. Use "libxtreme3d_2c.a" for link to your program
+Enjoy.
+
+Work in progress. Docs and samples will be soon... May be.
+I am sorry for my bad English.
