@@ -1,9 +1,6 @@
 #ifndef XTREME3D_2C_H
 #define XTREME3D_2C_H
 
-#define X3D_INCLUDE_WINDOW_ROUTINES /* Undef if you will use external window creation lib */
-#define X3D_INCLUDE_TIMER_ROUTINES  /* Undef if you will use external timer lib */
-
 #include <windows.h>
 #ifdef X3D_INCLUDE_TIMER_ROUTINES
 	#include <stdint.h>
