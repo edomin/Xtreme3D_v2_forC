@@ -653,26 +653,12 @@ LRESULT CALLBACK WndProc (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	switch (message)
     {
 		case WM_CREATE:
-			return 0;
-			
+			return 0;	
 		case WM_CLOSE:
 			PostQuitMessage(0);
 			return 0;
-
 		case WM_DESTROY:
 			return 0;
-
-		case WM_KEYDOWN:
-			switch (wParam)
-			{
-				case VK_ESCAPE:
-				{
-					/* PostQuitMessage(0); */
-					return 0;
-				}
-			}
-			return 0;
-
 		default:
 			return DefWindowProc (hWnd, message, wParam, lParam);
     }
@@ -772,6 +758,11 @@ int X3D_WindowDestroy(HWND hwnd)
 	/* copypasted from sample Xtreme3DCpp/template.cpp of Xtreme3D v2 for CPP */
 	/* and edited by me */
 	int cds_result;
+	if (!X3D_XED)
+	{
+		PostQuitMessage (0);
+		X3D_WindowXed();
+	}
 	if (!DestroyWindow(hwnd))
 	{
 		X3D_ERR = X3D_ERR_DW;
@@ -797,6 +788,7 @@ BOOL X3D_WindowXed()
 	{
 		if (msg.message == WM_QUIT)
 		{
+			X3D_XED = TRUE;
 			return TRUE;
 		}
 		else
