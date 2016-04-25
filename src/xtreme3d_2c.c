@@ -664,6 +664,7 @@ LRESULT CALLBACK WndProc (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
 }
 
+#ifdef X3D_INCLUDE_WINDOW_ROUTINES
 HWND X3D_WindowCreate(int s_width, int s_height, int s_depth, BOOL fullscreen, char *caption)
 {
 	/* copypasted from sample Xtreme3DCpp/template.cpp of Xtreme3D v2 for CPP */
@@ -799,26 +800,40 @@ BOOL X3D_WindowXed()
 	}
 	return FALSE;
 }
+#endif
+
+#ifdef X3D_INCLUDE_TIMER_ROUTINES
+void X3D_TimerStart(void)
+{
+	startTime = clock() * 1000 / CLOCKS_PER_SEC;
+}
+
+uint32_t X3D_TimerGetTicks(void)
+{
+	return clock() * 1000 / CLOCKS_PER_SEC - startTime;
+}
+
+uint32_t X3D_TimerDelay(uint32_t ms)
+{
+	Sleep(ms);
+	return 1000 / X3D_TimerGetTicks();
+}
+
+uint32_t X3D_TimerDelayForFPS(uint32_t fps)
+{
+	if(X3D_TimerGetTicks() < 1000 / fps)
+	{
+		Sleep((1000 / fps) - X3D_TimerGetTicks());
+		return fps;
+	}
+	else
+	{
+		return 1000 / X3D_TimerGetTicks();
+	}
+}
+#endif
 
 int X3D_GetLastErrorCode(void)
 {
 	return X3D_ERR;
 }
-
-/*
-static float X3D_GetFPS(void)
-{
-   static float FPSc = 0.0f;
-   static float FPSr = 0.0f;
-   float nextSecond = 0.0f;
-   static float prevSecond = 0.0f;
-   FPSc++;
-   nextSecond = GetTickCount() * 0.001f;
-   if(nextSecond - prevSecond > 1.0f)
-      {
-	  prevSecond = nextSecond;  
-      FPSr = FPSc;
-      FPSc = 0;
-      }
-   return FPSr;
-}*/

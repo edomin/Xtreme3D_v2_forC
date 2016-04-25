@@ -1,11 +1,16 @@
 #ifndef X3D_XTREME3D_H
 #define X3D_XTREME3D_H
 
-#define X3D_INCLUDE_WINDOW_ROUTINES /* Undef if you will use other window creation lib */
-									/* I think it must be makefile option */
+#define X3D_INCLUDE_WINDOW_ROUTINES /* Undef if you will use external window creation lib */
+#define X3D_INCLUDE_TIMER_ROUTINES  /* Undef if you will use external timer lib */
+									/* I think it must be makefile options */
 
-#ifdef X3D_INCLUDE_WINDOW_ROUTINES
+#if defined(X3D_INCLUDE_WINDOW_ROUTINES) || defined(X3D_INCLUDE_TIMER_ROUTINES)
 	#include <windows.h>
+#endif
+#ifdef X3D_INCLUDE_TIMER_ROUTINES
+	#include <stdint.h>
+	#include <time.h>
 #endif
 
 #include "actor.h"
@@ -268,8 +273,11 @@ void X3D_Quit(void);
 	int X3D_WindowDestroy(HWND hwnd);
 	BOOL X3D_WindowXed();
 #endif
+#ifdef X3D_INCLUDE_TIMER_ROUTINES
+	void X3D_TimerStart(void);
+	uint32_t X3D_TimerDelay(uint32_t ms);
+	uint32_t X3D_TimerDelayForFPS(uint32_t fps);
+#endif
 int X3D_GetLastErrorCode(void);
-/*
-static float X3D_GetFPS(void);*/
 
 #endif

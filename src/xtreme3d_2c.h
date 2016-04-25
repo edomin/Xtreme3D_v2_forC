@@ -1,9 +1,14 @@
 #ifndef XTREME3D_2C_H
 #define XTREME3D_2C_H
 
-#define X3D_INCLUDE_WINDOW_ROUTINES /* Undef if you will use other window creation lib */
+#define X3D_INCLUDE_WINDOW_ROUTINES /* Undef if you will use external window creation lib */
+#define X3D_INCLUDE_TIMER_ROUTINES  /* Undef if you will use external timer lib */
 
 #include <windows.h>
+#ifdef X3D_INCLUDE_TIMER_ROUTINES
+	#include <stdint.h>
+	#include <time.h>
+#endif
 
 /* Errorcodes */
 #define X3D_ERR_UNKNOWN 	0 /* No error or unknown error */
@@ -58,7 +63,9 @@ HMODULE hLibXtreme3D;
 	BOOL s_fullscreen;
 	BOOL X3D_XED;
 #endif
-
+#ifdef X3D_INCLUDE_TIMER_ROUTINES
+	uint32_t startTime;
+#endif
 int X3D_ERR;
 
 /* Written by Timur Gafarov <clocktower89@mail.ru> then ripped and edited by me */
