@@ -3,7 +3,7 @@
 void X3D_Init(void)
 {
 	hLibXtreme3D = LoadLibrary("Xtreme3D.dll");
-	
+	X3D_ERR = 0;
 	/* Written by Timur Gafarov <clocktower89@mail.ru> then ripped and edited by me */
 	/* actor */
 	X3D_ActorCreate = (dFUNCpd)GetProcAddress(hLibXtreme3D, "ActorCreate");
@@ -645,6 +645,174 @@ void X3D_Quit(void)
 {
 	FreeLibrary(hLibXtreme3D);
 }
+
+LRESULT CALLBACK WndProc (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    /* copypasted from sample Xtreme3DCpp/template.cpp of Xtreme3D v2 for CPP */
+	/* and edited by me */
+	switch (message)
+    {
+		case WM_CREATE:
+			return 0;
+			
+		case WM_CLOSE:
+			PostQuitMessage(0);
+			return 0;
+
+		case WM_DESTROY:
+			return 0;
+
+		case WM_KEYDOWN:
+			switch (wParam)
+			{
+				case VK_ESCAPE:
+				{
+					/* PostQuitMessage(0); */
+					return 0;
+				}
+			}
+			return 0;
+
+		default:
+			return DefWindowProc (hWnd, message, wParam, lParam);
+    }
+}
+
+HWND X3D_WindowCreate(int s_width, int s_height, int s_depth, BOOL fullscreen, char *caption)
+{
+	/* copypasted from sample Xtreme3DCpp/template.cpp of Xtreme3D v2 for CPP */
+	/* and edited by me */
+	WNDCLASS wc;
+    HWND hwnd;
+    HDC hDC;
+    HGLRC hRC;
+    BOOL bQuit = FALSE;
+    HINSTANCE hInstance = GetModuleHandle(NULL);
+	X3D_XED = FALSE;
+	s_fullscreen = fullscreen;
+	if (hInstance == NULL)
+	{
+		X3D_ERR = 1;
+		return NULL;
+	}
+
+    /* Register window class */
+    wc.style = CS_OWNDC;
+    wc.lpfnWndProc = WndProc;
+    wc.cbClsExtra = 0;
+    wc.cbWndExtra = 0;
+    wc.hInstance = hInstance;
+    wc.hIcon = LoadIcon (NULL, IDI_APPLICATION);
+    wc.hCursor = LoadCursor (NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH) GetStockObject (BLACK_BRUSH);
+    wc.lpszMenuName = NULL;
+    wc.lpszClassName = "Xtreme3D";
+    if (RegisterClass(&wc) == 0)
+	{
+		X3D_ERR = 2;
+		return NULL;
+	}
+		
+	/* Screen options */
+    s_real_width = GetSystemMetrics(SM_CXSCREEN);
+    s_real_height = GetSystemMetrics(SM_CYSCREEN);
+	if ((s_real_width == 0) || (s_real_height == 0))
+	{
+		X3D_ERR = 3;
+		return NULL;
+	}
+		
+	/* Create main window */
+    if (fullscreen) 
+    {
+      hwnd = CreateWindow (
+      "Xtreme3D", caption, 
+      WS_POPUPWINDOW | WS_VISIBLE,
+      160, 120, s_width, s_height,
+      NULL, NULL, hInstance, NULL);
+      SetWindowPos(hwnd,HWND_TOP,0,0,s_width,s_height,SWP_NOSIZE);
+    }
+    else 
+    {
+      hwnd = CreateWindow (
+      "Xtreme3D", caption, 
+      WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
+      160, 120, s_width, s_height,
+      NULL, NULL, hInstance, NULL);
+    }
+	if (hwnd == NULL)
+	{
+		X3D_ERR = 4;
+		return NULL;
+	}
+    ZeroMemory(&sDevMode, sizeof(DEVMODE));
+    sDevMode.dmSize = sizeof(DEVMODE);
+    sDevMode.dmPelsWidth = s_width;
+    sDevMode.dmFields |= DM_PELSWIDTH;
+    sDevMode.dmPelsHeight = s_height;
+    sDevMode.dmFields |= DM_PELSHEIGHT;
+    sDevMode.dmBitsPerPel = s_depth;
+    sDevMode.dmFields |= DM_BITSPERPEL;
+	int cds_result;
+    if (fullscreen)
+	{
+		cds_result = ChangeDisplaySettings(&sDevMode, CDS_UPDATEREGISTRY);
+		if (cds_result != DISP_CHANGE_SUCCESSFUL)
+		{
+			X3D_ERR = (1000 + cds_result);
+			return NULL;
+		}
+	}
+	
+	return hwnd;
+}
+
+int X3D_WindowDestroy(HWND hwnd)
+{
+	/* copypasted from sample Xtreme3DCpp/template.cpp of Xtreme3D v2 for CPP */
+	/* and edited by me */
+	int cds_result;
+	if (!DestroyWindow(hwnd))
+	{
+		X3D_ERR = X3D_ERR_DW;
+		return X3D_ERR;
+	}
+	sDevMode.dmPelsWidth = s_real_width;
+    sDevMode.dmPelsHeight = s_real_height;
+    if (s_fullscreen)
+	{
+		cds_result = ChangeDisplaySettings(&sDevMode, CDS_UPDATEREGISTRY);
+		if (cds_result != DISP_CHANGE_SUCCESSFUL)
+		{
+			X3D_ERR = (1000 + cds_result);
+			return X3D_ERR;
+		}
+	}
+	return 0;
+}
+
+BOOL X3D_WindowXed()
+{
+	if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+	{
+		if (msg.message == WM_QUIT)
+		{
+			return TRUE;
+		}
+		else
+		{
+			TranslateMessage (&msg);
+			DispatchMessage (&msg);
+		}
+	}
+	return FALSE;
+}
+
+int X3D_GetLastErrorCode(void)
+{
+	return X3D_ERR;
+}
+
 /*
 static float X3D_GetFPS(void)
 {

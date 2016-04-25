@@ -1,6 +1,8 @@
 #ifndef X3D_XTREME3D_H
 #define X3D_XTREME3D_H
 
+#include <windows.h>
+
 #include "actor.h"
 #include "b3d.h"
 #include "blur.h"
@@ -236,8 +238,27 @@
 #define X3D_CM_FINE_CULLING                    		0.0
 #define X3D_CM_GROSS_CULLING                   		1.0
 
+#define X3D_ERR_UNKNOWN 							0 /* No error or unknown error */
+#define X3D_ERR_MH 									1 /* Could not get module handle */
+#define X3D_ERR_RWC 								2 /* Could not register window class */
+#define X3D_ERR_SM 									3 /* Could not get system metrics */
+#define X3D_ERR_CW 									4 /* Could not create window */
+#define X3D_ERR_DW 									5 /* Could not destroy window */
+/* ChangeDisplaySettings errors. */
+/* See http://msdn.microsoft.com/library/windows/desktop/dd183411.aspx for DISP_CHANGE_ errorcodes descriptions */
+#define X3D_ERR_CDS_CR 	(1000 + DISP_CHANGE_RESTART)
+#define X3D_ERR_CDS_CF 	(1000 + DISP_CHANGE_FAILED)
+#define X3D_ERR_CDS_CBM (1000 + DISP_CHANGE_BADMODE)
+#define X3D_ERR_CDS_CNU (1000 + DISP_CHANGE_NOTUPDATED)
+#define X3D_ERR_CDS_CBF (1000 + DISP_CHANGE_BADFLAGS)
+#define X3D_ERR_CDS_CBP (1000 + DISP_CHANGE_BADPARAM)
+
 void X3D_Init(void);
 void X3D_Quit(void);
+HWND X3D_WindowCreate(int width, int height, int depth, BOOL fullscreen, char *caption);
+int X3D_WindowDestroy(HWND hwnd);
+BOOL X3D_WindowXed();
+int X3D_GetLastErrorCode(void);
 /*
 static float X3D_GetFPS(void);*/
 
