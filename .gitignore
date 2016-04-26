@@ -2,5 +2,4 @@ lib/
 obj/
 samples/
 Xtreme3DCpp/
-*.dll
 include/config.h
