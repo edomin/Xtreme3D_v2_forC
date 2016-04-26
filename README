@@ -23,7 +23,12 @@ How to use it:
 1. Build it.
 2. Copy folders "include" and "lib" to your project.
 3. Use "xtreme3d.h" only for including all library functions. Use "libxtreme3d_2c.a" for link to your program
+4. Copy "Xtreme3D.dll" and "ode.dll" to folder where are executable file of your game.
 Enjoy.
+
+Source codes released to public domain (read UNLICENSE). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
+License for Open Dynamics Engine ("ode.dll") you can read here: http://www.ode.org/ode-license.html
+I do not know under what license are "Xtreme3D.dll". I think it is abandonware.
 
 Work in progress. Docs and samples will be soon... May be.
 I am sorry for my bad English.
