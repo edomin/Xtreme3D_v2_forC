@@ -1,4 +1,3 @@
-TOOLCHAIN = D:/Programming/Compilers/MinGW_4.8.1/bin
 CC = mingw32-gcc
 AR = mingw32-ar
 CFLAGS = -Isrc -ansi
