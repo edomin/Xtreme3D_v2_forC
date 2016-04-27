@@ -2,7 +2,8 @@
 #define X3D_TREE_H
 
 double (__stdcall * X3D_TreeCreate)(double parent);
-double (__stdcall * X3D_TreeSetMaterials)(double tree, char *mleaf, char *mback, char *mbranch);
+double (__stdcall * X3D_TreeSetMaterials)(double tree, char *mleaf, char *mback,
+                                          char *mbranch);
 double (__stdcall * X3D_TreeSetBranchFacets)(double tree, double facets);
 double (__stdcall * X3D_TreeBuildMesh)(double tree, double parent);
 double (__stdcall * X3D_TreeSetBranchNoise)(double tree, double bnoise);

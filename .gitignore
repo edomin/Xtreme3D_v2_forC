@@ -3,3 +3,4 @@ obj/
 samples/
 Xtreme3DCpp/
 include/config.h
+*.cbp

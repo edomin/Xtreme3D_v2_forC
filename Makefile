@@ -32,9 +32,9 @@ lib/libxtreme3d_2c.a: obj/xtreme3d_2c.o
 obj/xtreme3d_2c.o: defines src/xtreme3d_2c.c src/xtreme3d_2c.h
 	-mkdir obj
 	$(CC) $(CFLAGS) -c src/xtreme3d_2c.c -o obj/xtreme3d_2c.o
-	
+
 clean:
 	-rm -rf obj
 	-rm include/config.h
-	
+
 .FORCE:

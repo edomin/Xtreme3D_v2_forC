@@ -9,7 +9,10 @@ double (__stdcall * X3D_LensflareSetStreaks)(double lf, double streaks);
 double (__stdcall * X3D_LensflareSetStreakwidth)(double lf, double width);
 double (__stdcall * X3D_LensflareSetSecs)(double lf, double secs);
 double (__stdcall * X3D_LensflareSetResolution)(double lf, double res);
-double (__stdcall * X3D_LensflareSetElements)(double lf, double glow, double ring, double streaks, double rays, double secs);
-double (__stdcall * X3D_LensflareSetGradients)(double lf, double ind, double color1, double alpha1, double color2, double alpha2);
-
+double (__stdcall * X3D_LensflareSetElements)(double lf, double glow,
+                                              double ring, double streaks,
+                                              double rays, double secs);
+double (__stdcall * X3D_LensflareSetGradients)(double lf, double ind,
+                                               double color1, double alpha1,
+                                               double color2, double alpha2);
 #endif

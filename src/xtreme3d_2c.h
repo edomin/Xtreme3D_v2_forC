@@ -3,33 +3,34 @@
 
 #include <windows.h>
 #ifdef X3D_INCLUDE_TIMER_ROUTINES
-	#include <stdint.h>
-	#include <time.h>
+    #include <stdint.h>
+    #include <time.h>
 #endif
 
 /* Errorcodes */
-#define X3D_ERR_UNKNOWN 	0 /* No error or unknown error */
+#define X3D_ERR_UNKNOWN     0 /* No error or unknown error */
 #ifdef X3D_INCLUDE_WINDOW_ROUTINES
-	#define X3D_ERR_MH 		1 /* Could not get module handle */
-	#define X3D_ERR_RWC 	2 /* Could not register window class */
-	#define X3D_ERR_SM 		3 /* Could not get system metrics */
-	#define X3D_ERR_CW 		4 /* Could not create window */
-	#define X3D_ERR_DW 		5 /* Could not destroy window */
-	/* ChangeDisplaySettings errors. */
-	/* See http://msdn.microsoft.com/library/windows/desktop/dd183411.aspx for DISP_CHANGE_ errorcodes descriptions */
-	#define X3D_ERR_CDS_CR 	(1000 + DISP_CHANGE_RESTART)
-	#define X3D_ERR_CDS_CF 	(1000 + DISP_CHANGE_FAILED)
-	#define X3D_ERR_CDS_CBM (1000 + DISP_CHANGE_BADMODE)
-	#define X3D_ERR_CDS_CNU (1000 + DISP_CHANGE_NOTUPDATED)
-	#define X3D_ERR_CDS_CBF (1000 + DISP_CHANGE_BADFLAGS)
-	#define X3D_ERR_CDS_CBP (1000 + DISP_CHANGE_BADPARAM)
+    #define X3D_ERR_MH      1 /* Could not get module handle */
+    #define X3D_ERR_RWC     2 /* Could not register window class */
+    #define X3D_ERR_SM      3 /* Could not get system metrics */
+    #define X3D_ERR_CW      4 /* Could not create window */
+    #define X3D_ERR_DW      5 /* Could not destroy window */
+    /* ChangeDisplaySettings errors. */
+    /* See http://msdn.microsoft.com/library/windows/desktop/dd183411.aspx
+       for DISP_CHANGE_ errorcodes descriptions */
+    #define X3D_ERR_CDS_CR  (1000 + DISP_CHANGE_RESTART)
+    #define X3D_ERR_CDS_CF  (1000 + DISP_CHANGE_FAILED)
+    #define X3D_ERR_CDS_CBM (1000 + DISP_CHANGE_BADMODE)
+    #define X3D_ERR_CDS_CNU (1000 + DISP_CHANGE_NOTUPDATED)
+    #define X3D_ERR_CDS_CBF (1000 + DISP_CHANGE_BADFLAGS)
+    #define X3D_ERR_CDS_CBP (1000 + DISP_CHANGE_BADPARAM)
 #endif
 
 /* Written by Timur Gafarov <clocktower89@mail.ru> and edited by me */
 typedef double (__stdcall * dFUNC)    ();
 typedef double (__stdcall * dFUNC1d)  (double);
-typedef double (__stdcall * dFUNC2d)  (double,double); 
-typedef double (__stdcall * dFUNC3d)  (double,double,double); 
+typedef double (__stdcall * dFUNC2d)  (double,double);
+typedef double (__stdcall * dFUNC3d)  (double,double,double);
 typedef double (__stdcall * dFUNC4d)  (double,double,double,double);
 typedef double (__stdcall * dFUNC5d)  (double,double,double,double,double);
 typedef double (__stdcall * dFUNC6d)  (double,double,double,double,double,double);
@@ -39,12 +40,12 @@ typedef double (__stdcall * dFUNC9d)  (double,double,double,double,double,double
 typedef double (__stdcall * dFUNC10d) (double,double,double,double,double,double,double,double,double,double);
 
 typedef char * (__stdcall * pFUNC1d)  (double);
-typedef double (__stdcall * dFUNC1p)  (char *); 
-typedef double (__stdcall * dFUNC2p)  (char *,char *); 
-typedef double (__stdcall * dFUNCdp)  (double,char *); 
-typedef double (__stdcall * dFUNCpd)  (char *,double); 
-typedef double (__stdcall * dFUNCppd) (char *,char *,double); 
-typedef double (__stdcall * dFUNCpdd) (char *,double,double); 
+typedef double (__stdcall * dFUNC1p)  (char *);
+typedef double (__stdcall * dFUNC2p)  (char *,char *);
+typedef double (__stdcall * dFUNCdp)  (double,char *);
+typedef double (__stdcall * dFUNCpd)  (char *,double);
+typedef double (__stdcall * dFUNCppd) (char *,char *,double);
+typedef double (__stdcall * dFUNCpdd) (char *,double,double);
 typedef double (__stdcall * dFUNCddp) (double,double,char *);
 typedef double (__stdcall * dFUNCdpd) (double,char *,double);
 typedef double (__stdcall * dFUNCdpdd)(double,char *,double,double);
@@ -53,19 +54,20 @@ typedef double (__stdcall * dFUNCdppp)(double,char *,char *,char *);
 
 HMODULE hLibXtreme3D;
 #ifdef X3D_INCLUDE_WINDOW_ROUTINES
-	MSG msg;
-	DEVMODE sDevMode;
-	int s_real_width;
-	int s_real_height;
-	BOOL s_fullscreen;
-	BOOL X3D_XED;
+    MSG msg;
+    DEVMODE sDevMode;
+    int s_real_width;
+    int s_real_height;
+    BOOL s_fullscreen;
+    BOOL X3D_XED;
 #endif
 #ifdef X3D_INCLUDE_TIMER_ROUTINES
-	uint32_t startTime;
+    uint32_t startTime;
 #endif
 int X3D_ERR;
 
-/* Written by Timur Gafarov <clocktower89@mail.ru> then ripped and edited by me */
+/* Written by Timur Gafarov <clocktower89@mail.ru> then ripped and
+   edited by me */
 /* actor */
 dFUNCpd  X3D_ActorCreate;
 dFUNC2d  X3D_ActorCopy;

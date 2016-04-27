@@ -1,8 +1,10 @@
 #ifndef X3D_PARTITION_H
 #define X3D_PARTITION_H
 
-double (__stdcall * X3D_OctreeCreate)(double maxdepth, double leafthreshold, double growgravy, double culling);
-double (__stdcall * X3D_QuadtreeCreate)(double maxdepth, double leafthreshold, double growgravy, double culling);
+double (__stdcall * X3D_OctreeCreate)(double maxdepth, double leafthreshold,
+                                      double growgravy, double culling);
+double (__stdcall * X3D_QuadtreeCreate)(double maxdepth, double leafthreshold,
+                                        double growgravy, double culling);
 double (__stdcall * X3D_PartitionDestroy)(double tree);
 double (__stdcall * X3D_PartitionAddLeaf)(double tree, double object);
 double (__stdcall * X3D_PartitionLeafChanged)(double object);

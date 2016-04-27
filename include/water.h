@@ -3,7 +3,8 @@
 
 double (__stdcall * X3D_WaterCreate)(double parent);
 double (__stdcall * X3D_WaterCreateRandomRipple)(double water);
-double (__stdcall * X3D_WaterCreateRippleAtGridPosition)(double water, double x, double y);
+double (__stdcall * X3D_WaterCreateRippleAtGridPosition)(double water, double x,
+                                                         double y);
 double (__stdcall * X3D_WaterSetMask)(double water, char *material);
 double (__stdcall * X3D_WaterSetActive)(double water, double active);
 double (__stdcall * X3D_WaterReset)(double water);
