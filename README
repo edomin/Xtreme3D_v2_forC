@@ -1,4 +1,4 @@
-Xtreme3D v2 for C. Fork of Xtreme3D v2 for C++ by Timur Gafarov.
+﻿Xtreme3D v2 for C. Fork of Xtreme3D v2 for C++ by Timur Gafarov.
 About Xtreme3D library/engine you can read here: http://xtreme3d.narod.ru
 
 How to build it:
@@ -26,9 +26,11 @@ How to use it:
 4. Copy "Xtreme3D.dll" and "ode.dll" to folder where are executable file of your game.
 Enjoy.
 
-Source codes released to public domain (read UNLICENSE). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
-License for Open Dynamics Engine ("ode.dll") you can read here: http://www.ode.org/ode-license.html
-I do not know under what license are "Xtreme3D.dll". I think it is abandonware.
+Source codes released to public domain (read "UNLICENSE" file). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
+Open Dynamics Engine ("ode.dll") under modified 3-clause BSD license (read "doc/LICENSE-BSD.TXT").
+License agreement for "Xtreme3D.dll" you can found in file "doc/LICENSE-XTREME3D_DLL.TXT".
+
+Also you can found original Xtreme3D v2 for C++ here: http://xtreme3d.narod.ru/x3d_cpp.htm
 
 Work in progress. Docs and samples will be soon... May be.
 I am sorry for my bad English.
