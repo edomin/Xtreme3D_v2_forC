@@ -35,7 +35,6 @@ Copying:
 #. Open Dynamics Engine ("ode.dll") under modified 3-clause BSD license (read "doc/LICENSE-BSD.TXT").
 #. License agreement for "Xtreme3D.dll" you can found in file "doc/LICENSE-XTREME3D_DLL.TXT".
 #. Media files for samples placed in "samples/media" are without license. Authors - Timur Gafarov and some unknown peoples.
-#. "bool.h" placed in "samples/include" are without license. Author - Benedict W. Hazel. And also I can not find original header in network. If I right remember, I did download it from "code.google.com" long ago.
 
 Also you can found original Xtreme3D v2 for C++ here: http://xtreme3d.narod.ru/x3d_cpp.htm
 
