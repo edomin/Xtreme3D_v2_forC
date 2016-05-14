@@ -4,7 +4,20 @@ LD = $(TOOLCHAIN)/mingw32-gcc
 CFLAGS = -I../include -Iinclude -Wall
 LDFLAGS = -L../lib -lxtreme3d_2c -mwindows -s
 
-all: template.exe terrain.exe 3rdperson.exe water.exe bumpmapping_and_blur.exe volumetric_spotlight.exe copylibraries
+SAMPLES = template.exe \
+	terrain.exe \
+	3rdperson.exe \
+	water.exe \
+	bumpmapping_and_blur.exe \
+	volumetric_spotlight.exe \
+	offscreen_rendering.exe \
+	octree_1.exe \
+	octree_2.exe \
+	antialiasing.exe \
+	parallax_mapping.exe \
+	raycasting.exe
+
+all: $(SAMPLES) copylibraries
 
 copylibraries:
 	cp ../ode.dll ode.dll
@@ -45,6 +58,42 @@ volumetric_spotlight.exe: volumetric_spotlight.o
 
 volumetric_spotlight.o: volumetric_spotlight.c
 	$(CC) $(CFLAGS) -c volumetric_spotlight.c -o volumetric_spotlight.o
+
+offscreen_rendering.exe: offscreen_rendering.o
+	$(LD) -o offscreen_rendering.exe offscreen_rendering.o $(LDFLAGS)
+
+offscreen_rendering.o: offscreen_rendering.c
+	$(CC) $(CFLAGS) -c offscreen_rendering.c -o offscreen_rendering.o
+
+octree_1.exe: octree_1.o
+	$(LD) -o octree_1.exe octree_1.o $(LDFLAGS)
+
+octree_1.o: octree_1.c
+	$(CC) $(CFLAGS) -c octree_1.c -o octree_1.o
+
+octree_2.exe: octree_2.o
+	$(LD) -o octree_2.exe octree_2.o $(LDFLAGS)
+
+octree_2.o: octree_2.c
+	$(CC) $(CFLAGS) -c octree_2.c -o octree_2.o
+
+antialiasing.exe: antialiasing.o
+	$(LD) -o antialiasing.exe antialiasing.o $(LDFLAGS)
+
+antialiasing.o: antialiasing.c
+	$(CC) $(CFLAGS) -c antialiasing.c -o antialiasing.o
+
+parallax_mapping.exe: parallax_mapping.o
+	$(LD) -o parallax_mapping.exe parallax_mapping.o $(LDFLAGS)
+
+parallax_mapping.o: parallax_mapping.c
+	$(CC) $(CFLAGS) -c parallax_mapping.c -o parallax_mapping.o
+
+raycasting.exe: raycasting.o
+	$(LD) -o raycasting.exe raycasting.o $(LDFLAGS)
+
+raycasting.o: raycasting.c
+	$(CC) $(CFLAGS) -c raycasting.c -o raycasting.o
 
 clean:
 	-rm *.o

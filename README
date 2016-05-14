@@ -33,7 +33,7 @@ You can see samples in the folder "samples". For build samples type:
 Copying:
 #. Source code of binding and samples "3rdperson", "template", "terrain" released to public domain (read "UNLICENSE" file). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
 #. Samples forked from samples for Game Maker:
-	#. Source code of samples "water" and "bumpmapping_and_blur" are without license. Original samples made by Xception.
+	#. Source code of samples "water", "bumpmapping_and_blur", "volumetric_spotlight", "offscreen_rendering", "octree_1", "octree_2", "antialiasing", "parallax_mapping", "raycasting" are without license. Original samples made by Xception.
 #. Open Dynamics Engine ("ode.dll") under modified 3-clause BSD license (read "doc/LICENSE-BSD.TXT").
 #. License agreement for "Xtreme3D.dll" you can found in file "doc/LICENSE-XTREME3D_DLL.TXT".
 #. Media files for samples placed in "samples/media" are without license. Authors - Timur Gafarov and some unknown peoples.
