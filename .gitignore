@@ -14,3 +14,5 @@ samples/template.o
 samples/template.exe
 samples/3rdperson.o
 samples/3rdperson.exe
+samples/bumpmapping_and_blur.exe
+samples/bumpmapping_and_blur.o

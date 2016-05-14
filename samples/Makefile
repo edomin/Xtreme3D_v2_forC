@@ -4,7 +4,7 @@ LD = $(TOOLCHAIN)/mingw32-gcc
 CFLAGS = -I../include -Iinclude -Wall
 LDFLAGS = -L../lib -lxtreme3d_2c -mwindows -s
 
-all: template.exe terrain.exe 3rdperson.exe water.exe copylibraries
+all: template.exe terrain.exe 3rdperson.exe water.exe bumpmapping_and_blur.exe copylibraries
 
 copylibraries:
 	cp ../ode.dll ode.dll
@@ -33,6 +33,12 @@ water.exe: water.o
 
 water.o: water.c
 	$(CC) $(CFLAGS) -c water.c -o water.o
+
+bumpmapping_and_blur.exe: bumpmapping_and_blur.o
+	$(LD) -o bumpmapping_and_blur.exe bumpmapping_and_blur.o $(LDFLAGS)
+
+bumpmapping_and_blur.o: bumpmapping_and_blur.c
+	$(CC) $(CFLAGS) -c bumpmapping_and_blur.c -o bumpmapping_and_blur.o
 
 clean:
 	-rm *.o
