@@ -26,11 +26,18 @@ How to use it:
 4. Copy "Xtreme3D.dll" and "ode.dll" to folder where are executable file of your game.
 Enjoy.
 
-Source codes released to public domain (read "UNLICENSE" file). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
-Open Dynamics Engine ("ode.dll") under modified 3-clause BSD license (read "doc/LICENSE-BSD.TXT").
-License agreement for "Xtreme3D.dll" you can found in file "doc/LICENSE-XTREME3D_DLL.TXT".
+You can see samples in the folder "samples". For build samples type:
+	cd samples
+	make
+
+Copying:
+#. Source codes of binding and samples released to public domain (read "UNLICENSE" file). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
+#. Open Dynamics Engine ("ode.dll") under modified 3-clause BSD license (read "doc/LICENSE-BSD.TXT").
+#. License agreement for "Xtreme3D.dll" you can found in file "doc/LICENSE-XTREME3D_DLL.TXT".
+#. Media files for samples placed in "samples/media" are without license. Authors - Timur Gafarov and some unknown peoples.
+#. "bool.h" placed in "samples/include" are without license. Author - Benedict W. Hazel. And also I can not find original header in network. If I right remember, I did download it from "code.google.com" long ago.
 
 Also you can found original Xtreme3D v2 for C++ here: http://xtreme3d.narod.ru/x3d_cpp.htm
 
-Work in progress. Docs and samples will be soon... May be.
+Additional samples will be soon. I think I will not make complete doc.
 I am sorry for my bad English.
