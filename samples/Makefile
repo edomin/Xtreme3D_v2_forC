@@ -1,10 +1,14 @@
 TOOLCHAIN = D:/Programming/Compilers/MinGW_4.8.1/bin
 CC = $(TOOLCHAIN)/mingw32-gcc
 LD = $(TOOLCHAIN)/mingw32-gcc
-CFLAGS = -I../include -Iinclude
-LDFLAGS = -L../lib -lxtreme3d_2c -mwindows
+CFLAGS = -I../include -Iinclude -Wall
+LDFLAGS = -L../lib -lxtreme3d_2c -mwindows -s
 
 all: template.exe terrain.exe 3rdperson.exe copylibraries
+
+copylibraries:
+	cp ../ode.dll ode.dll
+	cp ../Xtreme3D.dll Xtreme3D.dll
 
 template.exe: template.o
 	$(LD) -o template.exe template.o $(LDFLAGS)
@@ -26,3 +30,5 @@ terrain.o: terrain.c
 
 clean:
 	-rm *.o
+	
+.PHONY: copylibraries
