@@ -31,7 +31,7 @@ You can see samples in the folder "samples". For build samples type:
 	make
 
 Copying:
-#. Source codes of binding and samples released to public domain (read "UNLICENSE" file). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
+#. Source code of binding and samples "3rdperson", "template", "terrain" released to public domain (read "UNLICENSE" file). Some parts of code copypasted from Xtreme3D v2 for C++ and samples for it (I cheked it in source texts).
 #. Source code of sample "water" are without license. Forked from sample for Game Maker. Original sample made by Xception.
 #. Open Dynamics Engine ("ode.dll") under modified 3-clause BSD license (read "doc/LICENSE-BSD.TXT").
 #. License agreement for "Xtreme3D.dll" you can found in file "doc/LICENSE-XTREME3D_DLL.TXT".
