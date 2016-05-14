@@ -4,13 +4,25 @@ LD = $(TOOLCHAIN)/mingw32-gcc
 CFLAGS = -I../include -Iinclude
 LDFLAGS = -L../lib -lxtreme3d_2c -mwindows
 
-all: template.exe
+all: template.exe terrain.exe 3rdperson.exe copylibraries
 
 template.exe: template.o
 	$(LD) -o template.exe template.o $(LDFLAGS)
 
 template.o: template.c
 	$(CC) $(CFLAGS) -c template.c -o template.o
-	
+
+terrain.exe: terrain.o
+	$(LD) -o terrain.exe terrain.o $(LDFLAGS)
+
+terrain.o: terrain.c
+	$(CC) $(CFLAGS) -c terrain.c -o terrain.o
+
+3rdperson.exe: 3rdperson.o
+	$(LD) -o 3rdperson.exe 3rdperson.o $(LDFLAGS)
+
+3rdperson.o: 3rdperson.c
+	$(CC) $(CFLAGS) -c 3rdperson.c -o 3rdperson.o
+
 clean:
 	-rm *.o
