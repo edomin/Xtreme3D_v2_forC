@@ -25,7 +25,8 @@ int main(int argc, char **argv)
     X3D_ViewerSetFogDistance(view1,100,500);
     X3D_ViewerEnableVSync(view1,X3D_VSM_NO_SYNC);
     
-    double back = X3D_DummycubeCreate(0);
+    // double back = X3D_DummycubeCreate(0);
+	X3D_DummycubeCreate(0);
     double scene = X3D_DummycubeCreate(0); 
     double front = X3D_DummycubeCreate(0);
     
