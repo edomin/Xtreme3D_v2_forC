@@ -6,15 +6,5 @@ include/config.h
 Xtreme3D_v2_forC.layout
 samples/ode.dll
 samples/Xtreme3D.dll
-samples/water.o
-samples/water.exe
-samples/terrain.o
-samples/terrain.exe
-samples/template.o
-samples/template.exe
-samples/3rdperson.o
-samples/3rdperson.exe
-samples/bumpmapping_and_blur.exe
-samples/bumpmapping_and_blur.o
-samples/volumetric_spotlight.exe
-samples/volumetric_spotlight.o
+*.exe
+*.o
