@@ -4,7 +4,7 @@ LD = $(TOOLCHAIN)/mingw32-gcc
 CFLAGS = -I../include -Iinclude -Wall
 LDFLAGS = -L../lib -lxtreme3d_2c -mwindows -s
 
-all: template.exe terrain.exe 3rdperson.exe water.exe bumpmapping_and_blur.exe copylibraries
+all: template.exe terrain.exe 3rdperson.exe water.exe bumpmapping_and_blur.exe volumetric_spotlight.exe copylibraries
 
 copylibraries:
 	cp ../ode.dll ode.dll
@@ -39,6 +39,12 @@ bumpmapping_and_blur.exe: bumpmapping_and_blur.o
 
 bumpmapping_and_blur.o: bumpmapping_and_blur.c
 	$(CC) $(CFLAGS) -c bumpmapping_and_blur.c -o bumpmapping_and_blur.o
+
+volumetric_spotlight.exe: volumetric_spotlight.o
+	$(LD) -o volumetric_spotlight.exe volumetric_spotlight.o $(LDFLAGS)
+
+volumetric_spotlight.o: volumetric_spotlight.c
+	$(CC) $(CFLAGS) -c volumetric_spotlight.c -o volumetric_spotlight.o
 
 clean:
 	-rm *.o
