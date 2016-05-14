@@ -4,7 +4,7 @@ LD = $(TOOLCHAIN)/mingw32-gcc
 CFLAGS = -I../include -Iinclude -Wall
 LDFLAGS = -L../lib -lxtreme3d_2c -mwindows -s
 
-all: template.exe terrain.exe 3rdperson.exe copylibraries
+all: template.exe terrain.exe 3rdperson.exe water.exe copylibraries
 
 copylibraries:
 	cp ../ode.dll ode.dll
@@ -27,6 +27,12 @@ terrain.o: terrain.c
 
 3rdperson.o: 3rdperson.c
 	$(CC) $(CFLAGS) -c 3rdperson.c -o 3rdperson.o
+
+water.exe: water.o
+	$(LD) -o water.exe water.o $(LDFLAGS)
+
+water.o: water.c
+	$(CC) $(CFLAGS) -c water.c -o water.o
 
 clean:
 	-rm *.o
