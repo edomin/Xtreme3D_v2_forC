@@ -1,6 +1,6 @@
 lib/
 obj/
-samples/
 Xtreme3DCpp/
 include/config.h
 *.cbp
+Xtreme3D_v2_forC.layout
