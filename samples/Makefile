@@ -15,7 +15,12 @@ SAMPLES = template.exe \
 	octree_2.exe \
 	antialiasing.exe \
 	parallax_mapping.exe \
-	raycasting.exe
+	raycasting.exe \
+	smd_skeleton_basic.exe \
+	smd_skeleton_trinity.exe \
+	thorfx.exe \
+	primitives.exe \
+	fps_demo.exe
 
 all: $(SAMPLES) copylibraries
 
@@ -94,6 +99,36 @@ raycasting.exe: raycasting.o
 
 raycasting.o: raycasting.c
 	$(CC) $(CFLAGS) -c raycasting.c -o raycasting.o
+
+smd_skeleton_basic.exe: smd_skeleton_basic.o
+	$(LD) -o smd_skeleton_basic.exe smd_skeleton_basic.o $(LDFLAGS)
+
+smd_skeleton_basic.o: smd_skeleton_basic.c
+	$(CC) $(CFLAGS) -c smd_skeleton_basic.c -o smd_skeleton_basic.o
+
+smd_skeleton_trinity.exe: smd_skeleton_trinity.o
+	$(LD) -o smd_skeleton_trinity.exe smd_skeleton_trinity.o $(LDFLAGS)
+
+smd_skeleton_trinity.o: smd_skeleton_trinity.c
+	$(CC) $(CFLAGS) -c smd_skeleton_trinity.c -o smd_skeleton_trinity.o
+
+thorfx.exe: thorfx.o
+	$(LD) -o thorfx.exe thorfx.o $(LDFLAGS)
+
+thorfx.o: thorfx.c
+	$(CC) $(CFLAGS) -c thorfx.c -o thorfx.o
+
+primitives.exe: primitives.o
+	$(LD) -o primitives.exe primitives.o $(LDFLAGS)
+
+primitives.o: primitives.c
+	$(CC) $(CFLAGS) -c primitives.c -o primitives.o
+
+fps_demo.exe: fps_demo.o
+	$(LD) -o fps_demo.exe fps_demo.o $(LDFLAGS)
+
+fps_demo.o: fps_demo.c
+	$(CC) $(CFLAGS) -c fps_demo.c -o fps_demo.o
 
 clean:
 	-rm *.o
